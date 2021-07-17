@@ -3,8 +3,10 @@ from scipy import sparse
 # corrMatrix=pd.read_csv("corr_mar.csv")
 movies=pd.read_csv("dataset/movies.csv")
 links=pd.read_csv("dataset/links.csv")
+image=pd.read_csv("dataset/movie_poster.csv",names=["movieId","Image"])
 
 ratings = pd.read_csv('dataset/ratings.csv')
+
 
 ratings = pd.merge(movies,ratings).drop(['genres','timestamp'],axis=1)
 userRatings = ratings.pivot_table(index=['userId'],columns=['title'],values='rating')
@@ -35,5 +37,6 @@ def recommend(movies):
 # genrce=movies[movies["movieId"].isin(indexs)]["genres"].values
 # print(genrce)
 
+# print(image["Image"][image["movieId"]==1].values[0])
 
 
